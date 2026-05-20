@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.moviesapp.ui.presentation.HomeScreen
+import com.example.moviesapp.ui.presentation.details.DetailScreen
 import com.example.moviesapp.utils.Screens
 
 @Composable
@@ -22,11 +23,11 @@ fun NavGraph() {
         }
         composable(
             route = Screens.Details.route + "/{movieId}",
-            arguments = listOf(navArgument(name = "movieId"){
+            arguments = listOf(navArgument(name = "movieId") {
                 type = NavType.IntType
             })
         ) {
-
+            DetailScreen()
         }
     }
 }

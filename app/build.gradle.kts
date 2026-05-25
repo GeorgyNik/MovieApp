@@ -15,6 +15,7 @@ val localPropertiesFile = rootProject.file("local.properties")
 if (localPropertiesFile.exists()) {
     localProperties.load(FileInputStream(localPropertiesFile))
 }
+val roomVersion = "2.7.2"
 
 android {
     namespace = "com.example.moviesapp"
@@ -70,6 +71,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation(libs.androidx.compose.foundation.layout)
+    implementation(libs.androidx.compose.runtime.saveable)
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
@@ -105,4 +107,8 @@ dependencies {
 
     // System UI Controller
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.36.0")
+
+    implementation("androidx.room:room-ktx:$roomVersion")
+    implementation("androidx.room:room-paging:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
 }

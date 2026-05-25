@@ -62,13 +62,15 @@ fun MovieItem(
     movie: Movie,
     navController: NavHostController
 ) {
+    val posterPath = movie.poster_path
     val imageState = rememberAsyncImagePainter(
         model =
             ImageRequest.Builder(LocalContext.current)
-                .data(MovieApi.IMAGE_BASE_URL + movie.backdrop_path)
+                .data(MovieApi.IMAGE_BASE_URL + posterPath.removePrefix("/"))
                 .size(Size.ORIGINAL)
                 .build()
-    )
+    ).state
+
     val defaultColor = MaterialTheme.colorScheme.secondaryContainer
     var dominantColor by remember { mutableStateOf(defaultColor) }
 
